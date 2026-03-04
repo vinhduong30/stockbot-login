@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Bot Login</title>
+    <title>Tokyo Bot Login</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -12,6 +12,7 @@
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
+        
         body {
             min-height: 100vh;
             background: linear-gradient(145deg, #0b1120 0%, #19223f 100%);
@@ -20,6 +21,7 @@
             align-items: center;
             padding: 16px;
         }
+        
         .card {
             width: 100%;
             max-width: 420px;
@@ -30,6 +32,7 @@
             overflow: hidden;
             animation: slideUp 0.5s ease;
         }
+        
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -40,12 +43,14 @@
                 transform: translateY(0);
             }
         }
+        
         .header {
             background: linear-gradient(135deg, #2563eb, #7c3aed);
             padding: 40px 24px 32px;
             text-align: center;
             position: relative;
         }
+        
         .header h1 {
             color: white;
             font-size: 32px;
@@ -53,15 +58,18 @@
             margin-bottom: 8px;
             letter-spacing: -0.5px;
         }
+        
         .header p {
             color: rgba(255, 255, 255, 0.9);
             font-size: 15px;
             font-weight: 400;
         }
+        
         .content {
             padding: 28px 24px 32px;
             background: white;
         }
+        
         .tabs {
             display: flex;
             gap: 8px;
@@ -70,6 +78,7 @@
             border-radius: 20px;
             margin-bottom: 28px;
         }
+        
         .tab {
             flex: 1;
             text-align: center;
@@ -81,19 +90,29 @@
             transition: all 0.2s ease;
             color: #64748b;
         }
+        
         .tab.active {
             background: white;
             color: #2563eb;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
+        
         .form-group {
             margin-bottom: 24px;
             animation: fadeIn 0.3s ease;
         }
+        
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-10px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
+        
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -101,9 +120,11 @@
             font-weight: 600;
             font-size: 14px;
         }
+        
         .input-wrapper {
             position: relative;
         }
+        
         .input-wrapper i {
             position: absolute;
             left: 16px;
@@ -112,6 +133,7 @@
             color: #94a3b8;
             font-size: 18px;
         }
+        
         .input-wrapper input {
             width: 100%;
             padding: 16px 16px 16px 48px;
@@ -121,12 +143,14 @@
             transition: all 0.2s ease;
             background: #f8fafc;
         }
+        
         .input-wrapper input:focus {
             border-color: #2563eb;
             background: white;
             outline: none;
             box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
+        
         .btn-login {
             width: 100%;
             padding: 18px;
@@ -141,18 +165,22 @@
             margin-top: 16px;
             box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
         }
+        
         .btn-login:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5);
         }
+        
         .btn-login:active {
             transform: translateY(0);
         }
+        
         .btn-login:disabled {
             opacity: 0.6;
             transform: none;
             box-shadow: none;
         }
+        
         .info-box {
             background: #f0f9ff;
             border-radius: 20px;
@@ -160,68 +188,51 @@
             margin-top: 24px;
             border-left: 4px solid #2563eb;
         }
+        
         .info-box strong {
             color: #1e293b;
             display: block;
             margin-bottom: 8px;
             font-size: 14px;
         }
+        
         .info-box p {
             color: #475569;
             font-size: 13px;
             line-height: 1.5;
             margin: 4px 0;
         }
-        .loading {
-            display: none;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid #e2e8f0;
-            border-top: 4px solid #2563eb;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .success {
-            display: none;
-            background: #dcfce7;
-            color: #166534;
-            padding: 16px;
-            border-radius: 20px;
-            margin-top: 20px;
-            text-align: center;
-            font-weight: 600;
-            animation: popIn 0.3s ease;
-        }
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+        
         .footer {
             text-align: center;
             padding: 20px 24px;
             background: #f8fafc;
             border-top: 1px solid #e2e8f0;
         }
+        
         .footer small {
             color: #64748b;
             font-size: 12px;
+        }
+        
+        .debug-log {
+            display: none;
+            background: #1e293b;
+            color: #a5f3fc;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 16px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
         }
     </style>
 </head>
 <body>
     <div class="card">
         <div class="header">
-            <h1>🚀 STOCK BOT</h1>
-            <p>Đăng nhập để bắt đầu đầu tư</p>
+            <h1>🚀 TOKYO BOT</h1>
+            <p>Đăng nhập để bắt đầu</p>
         </div>
         
         <div class="content">
@@ -252,25 +263,17 @@
             </button>
             
             <div class="info-box">
-                <strong>📌 Hướng dẫn nhanh:</strong>
-                <p>• KIS ID: Mã chứng khoán thật hoặc nhập đại 057C + 6 số</p>
-                <p>• Email: Bất kỳ email nào (ví dụ: user@gmail.com)</p>
-                <p>• Sau khi đăng nhập, đóng webapp và quay lại chat</p>
+                <strong>📌 Hướng dẫn:</strong>
+                <p>• Nhấn nút ĐĂNG NHẬP để gửi dữ liệu</p>
+                <p>• Dữ liệu sẽ được gửi về bot</p>
+                <p>• Sau đó webapp tự đóng</p>
             </div>
             
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p style="margin-top: 16px; color: #2563eb; font-weight: 600;">Đang xử lý...</p>
-            </div>
-            
-            <div class="success" id="success">
-                ✅ Đăng nhập thành công!<br>
-                <small style="display: block; margin-top: 8px;">Bạn có thể đóng cửa sổ này</small>
-            </div>
+            <div class="debug-log" id="debug-log"></div>
         </div>
         
         <div class="footer">
-            <small>© 2026 Stock Bot • Đầu tư thông minh</small>
+            <small>© 2026 Tokyo Bot</small>
         </div>
     </div>
 
@@ -280,85 +283,116 @@
         tg.expand(); // Mở rộng webapp
         tg.ready(); // Báo cho Telegram biết đã sẵn sàng
         
+        console.log("🚀 WebApp đã khởi động!");
+        console.log("Telegram WebApp:", tg);
+        
+        // Hàm ghi log debug
+        function addDebugLog(message) {
+            const debugLog = document.getElementById('debug-log');
+            debugLog.style.display = 'block';
+            debugLog.innerHTML += message + '\n';
+            console.log(message);
+        }
+        
         // Chuyển tab
         function switchTab(tab) {
-            // Update tab active
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            
             if (tab === 'kis') {
                 event.target.classList.add('active');
                 document.getElementById('kis-form').style.display = 'block';
                 document.getElementById('email-form').style.display = 'none';
+                addDebugLog('📋 Chuyển sang tab KIS');
             } else {
                 event.target.classList.add('active');
                 document.getElementById('kis-form').style.display = 'none';
                 document.getElementById('email-form').style.display = 'block';
+                addDebugLog('📋 Chuyển sang tab Email');
             }
         }
         
         // Xử lý đăng nhập
         function login() {
+            addDebugLog('🔵 Bắt đầu đăng nhập...');
+            
             const loginBtn = document.getElementById('login-btn');
-            const loading = document.getElementById('loading');
-            const success = document.getElementById('success');
-            
-            // Xác định tab đang active
-            const activeTab = document.querySelector('.tab.active').textContent;
-            let loginData = {};
-            
-            if (activeTab.includes('KIS')) {
-                const kisId = document.getElementById('kis-id').value.trim();
-                if (!kisId) {
-                    tg.showAlert('Vui lòng nhập mã KIS');
-                    return;
-                }
-                loginData = {
-                    type: 'kis',
-                    value: kisId
-                };
-            } else {
-                const email = document.getElementById('email').value.trim();
-                if (!email || !email.includes('@')) {
-                    tg.showAlert('Vui lòng nhập email hợp lệ');
-                    return;
-                }
-                loginData = {
-                    type: 'email',
-                    value: email
-                };
-            }
-            
-            // Disable nút và hiện loading
             loginBtn.disabled = true;
-            loginBtn.style.opacity = '0.6';
-            loading.style.display = 'block';
+            loginBtn.textContent = 'ĐANG XỬ LÝ...';
             
-            // Gửi dữ liệu về bot
             try {
-                tg.sendData(JSON.stringify(loginData));
+                // Xác định tab đang active
+                const activeTab = document.querySelector('.tab.active').textContent;
+                addDebugLog(`📌 Tab active: ${activeTab}`);
                 
-                // Hiển thị thành công
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                    success.style.display = 'block';
+                let loginData = {};
+                
+                if (activeTab.includes('KIS')) {
+                    const kisId = document.getElementById('kis-id').value.trim();
+                    addDebugLog(`📝 Giá trị KIS: ${kisId}`);
                     
-                    // Đóng webapp sau 2 giây
-                    setTimeout(() => {
-                        tg.close();
-                    }, 2000);
-                }, 1000);
+                    if (!kisId) {
+                        alert('Vui lòng nhập mã KIS');
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = 'ĐĂNG NHẬP';
+                        return;
+                    }
+                    
+                    loginData = {
+                        type: 'kis',
+                        value: kisId
+                    };
+                } else {
+                    const email = document.getElementById('email').value.trim();
+                    addDebugLog(`📝 Giá trị Email: ${email}`);
+                    
+                    if (!email || !email.includes('@')) {
+                        alert('Vui lòng nhập email hợp lệ');
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = 'ĐĂNG NHẬP';
+                        return;
+                    }
+                    
+                    loginData = {
+                        type: 'email',
+                        value: email
+                    };
+                }
+                
+                // Chuyển thành JSON
+                const jsonData = JSON.stringify(loginData);
+                addDebugLog(`📦 Dữ liệu JSON: ${jsonData}`);
+                
+                // Gửi dữ liệu
+                addDebugLog('📤 Đang gửi dữ liệu...');
+                tg.sendData(jsonData);
+                addDebugLog('✅ Đã gửi dữ liệu thành công!');
+                
+                // Đóng webapp
+                addDebugLog('🔚 Đóng webapp...');
+                setTimeout(() => {
+                    tg.close();
+                }, 500);
                 
             } catch (error) {
-                tg.showAlert('Lỗi: ' + error.message);
+                addDebugLog(`❌ LỖI: ${error.message}`);
+                alert('Lỗi: ' + error.message);
                 loginBtn.disabled = false;
-                loginBtn.style.opacity = '1';
-                loading.style.display = 'none';
+                loginBtn.textContent = 'ĐĂNG NHẬP';
             }
         }
         
-        // Xử lý nút back của điện thoại
+        // Xử lý nút back
         tg.onEvent('backButtonClicked', function() {
+            addDebugLog('🔙 Nhấn nút back');
             tg.close();
         });
+        
+        // Log khi webapp sẵn sàng
+        tg.onEvent('mainButtonClicked', function() {
+            addDebugLog('🔘 Main button clicked');
+        });
+        
+        addDebugLog('✅ WebApp đã sẵn sàng!');
     </script>
 </body>
 </html>
