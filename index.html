@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tokyo Bot Login</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body style="text-align: center; padding: 20px; font-family: Arial;">
+    <h1>🚀 TOKYO BOT</h1>
+    <p>Đăng nhập để tiếp tục</p>
+    
+    <input type="text" id="kis" value="057C123456" style="padding: 10px; width: 200px; margin: 10px;">
+    <br>
+    <button onclick="login()" style="padding: 15px 30px; background: blue; color: white; border: none; border-radius: 10px; margin: 10px;">
+        ĐĂNG NHẬP
+    </button>
+    
+    <div id="log" style="margin-top: 20px; color: green;"></div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        
+        document.getElementById('log').innerHTML = '✅ WebApp sẵn sàng!';
+        
+        function login() {
+            document.getElementById('log').innerHTML = '📤 Đang gửi...';
+            
+            let data = {
+                type: 'kis',
+                value: document.getElementById('kis').value
+            };
+            
+            tg.sendData(JSON.stringify(data));
+            document.getElementById('log').innerHTML = '✅ Đã gửi! Đóng webapp...';
+            
+            setTimeout(() => tg.close(), 1000);
+        }
+    </script>
+</body>
+</html>
